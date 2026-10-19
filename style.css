@@ -1,0 +1,445 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+  /* Background dari gambar ke-2 */
+  background: url("Background1.png") center / cover no-repeat fixed;
+  background-color: #6f97c0; /* cadangan jika gambar gagal dimuat */
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #555;
+  border-radius: 14px;
+  padding: 22px 26px 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+}
+
+.tabs {
+  display: flex;
+  background: #c5e1fb;
+  border: 1px solid #5a7fa6;
+  border-radius: 10px;
+  padding: 2px;
+  margin-bottom: 20px;
+}
+.tab {
+  flex: 1;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.tab.active {
+  background: #7ab8fa;
+  border-color: #1b4f8a;
+}
+
+h1 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.field input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  background: #ddd;
+  border: 1px solid #777;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.field input:focus { outline: 2px solid #7ab8fa; background: #e8e8e8; }
+
+.link {
+  display: block;
+  font-size: 12.5px;
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+.link:hover { text-decoration: underline; }
+
+.btn {
+  width: 100%;
+  height: 46px;
+  background: #7ab8fa;
+  border: 1px solid #1b4f8a;
+  border-radius: 10px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter .2s;
+}
+.btn:hover { filter: brightness(.95); }
+
+.alt { text-align: center; font-size: 14px; margin-top: 14px; }
+.alt a { color: #1b4f8a; font-weight: 600; text-decoration: none; }
+
+.hidden { display: none !important; }
+
+/* ===== Halaman Pilih Lokasi & Pilih Toko ===== */
+.card-pilih {
+  max-width: 440px;
+  padding: 0;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.card-pilih h1 {
+  font-size: 30px;
+  padding: 18px 0 14px;
+  margin: 0;
+  border-bottom: 1px solid #777;
+}
+.list {
+  list-style: none;
+  padding: 10px 9px 14px;
+  max-height: 340px;       /* kira-kira 4 baris, sisanya bisa di-scroll */
+  overflow-y: auto;
+}
+.list li { margin-bottom: 9px; }
+.list li:last-child { margin-bottom: 0; }
+.item {
+  width: 100%;
+  min-height: 70px;
+  background: #efefef;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.item small { display: block; font-weight: 400; font-size: 12px; color: #555; margin-top: 3px; }
+.item:hover { background: #dbeafe; }
+.item:active { transform: scale(.99); }
+.kosong { text-align: center; padding: 24px; color: #555; font-size: 14px; }
+
+.btn-kembali {
+  position: fixed;
+  top: 16px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #5ea8fa;
+  color: #fff;
+  border: 1px solid #3b82f6;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn-kembali:hover { filter: brightness(.95); }
+
+/* ===================== BERANDA CUSTOMER ===================== */
+body.beranda {
+  display: block;
+  padding: 0;
+  background: #fff;
+  min-height: 100vh;
+  color: #000;
+}
+
+/* Latar hero */
+.hero-bg {
+  position: fixed;          /* tetap diam saat halaman di-scroll */
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background: url("Background.png") center / cover no-repeat;
+  z-index: 0;
+}
+
+/* Header */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 100px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.55));
+  backdrop-filter: blur(6px);
+}
+.brand { display: flex; align-items: center; gap: 22px; text-decoration: none; color: #000; }
+.brand-logo {
+  width: 80px; height: 42px;
+  background: url("logoo_tsp.png") no-repeat;
+  background-size: 178px auto;
+  background-position: -48px -27px;
+}
+.brand-name { font-size: 34px; font-weight: 700; letter-spacing: .5px; font-family: "Trebuchet MS", "Segoe UI", sans-serif; }
+
+.menu { display: flex; gap: 24px; margin-left: auto; margin-right: 36px; }
+.menu a { text-decoration: none; color: #444; font-size: 24px; font-weight: 300; }
+.menu a.active { color: #4a9af5; }
+.menu a:hover { color: #4a9af5; }
+
+.nav-icons { display: flex; gap: 22px; }
+.nav-icons a { display: inline-flex; width: 32px; height: 32px; color: #111; }
+.nav-icons svg, .chat-close svg, .chat-img svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Konten */
+.wrap { position: relative; z-index: 5; max-width: 1000px; margin: 0 auto; padding: 132px 20px 60px; }
+
+.panel {
+  background: rgba(105,105,105,.5);
+  border-radius: 24px;
+  padding: 18px 32px 36px;
+}
+
+.btn-back {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(130,130,130,.85);
+  color: #fff; font-size: 26px; font-weight: 700;
+  text-decoration: none;
+  padding: 6px 28px 6px 30px;
+  border-radius: 8px;
+}
+.btn-back svg { width: 34px; height: 34px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.btn-back:hover { background: rgba(110,110,110,.95); }
+
+.hero { display: flex; gap: 28px; align-items: flex-start; margin-top: 12px; }
+.hero-text { flex: 1 1 55%; max-width: 520px; color: #fff; }
+.welcome { font-size: 19px; font-weight: 500; text-transform: uppercase; margin-top: 12px; padding-left: 4px; }
+.hero-title {
+  font-size: 66px; line-height: 1.02; font-weight: 800; text-align: left;
+  margin: 0 0 14px; color: #fff;
+  text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
+}
+.hero-desc { font-size: 15px; line-height: 1.25; margin-bottom: 20px; padding-left: 4px; }
+.hero-img { flex: 1 1 40%; min-height: 283px; margin-top: 12px; background: #d9d9d9; }
+
+.btn-white {
+  display: block; width: 100%;
+  background: #fff;
+  border: 2px solid #4a9af5;
+  border-radius: 10px;
+  color: #3b8cf5;
+  font-size: 26px; font-weight: 700;
+  text-align: center; text-decoration: none;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-white:hover { background: #eaf3ff; }
+
+.feature {
+  background: #8f8f8f;
+  border-radius: 18px;
+  padding: 20px 28px 22px;
+  margin-top: 26px;
+  color: #fff;
+}
+.feature-head { display: flex; gap: 26px; align-items: flex-start; margin-bottom: 14px; }
+.feature-icon { width: 82px; height: 82px; flex: none; }
+.feature h2 { font-size: 23px; font-weight: 700; margin-bottom: 4px; }
+.feature p { font-size: 17px; line-height: 1.25; max-width: 520px; }
+
+/* Tombol melayang chat */
+.chat-fab {
+  position: fixed; right: 36px; bottom: 36px; z-index: 30;
+  width: 72px; height: 72px; border-radius: 50%;
+  background: #4a9af5; border: 1px solid #333;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.3);
+  transition: transform .15s;
+}
+.chat-fab:hover { transform: scale(1.06); }
+.chat-fab svg { width: 40px; height: 40px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Pop up chat */
+.chat {
+  position: fixed; right: 36px; bottom: 120px; z-index: 40;
+  width: 340px; height: 520px; max-height: calc(100vh - 140px);
+  display: none; flex-direction: column;
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 34px rgba(0,0,0,.35);
+}
+.chat.open { display: flex; }
+.chat-head {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #d9d9d9; border-bottom: 1px solid #000;
+  padding: 10px 14px 10px 18px;
+}
+.chat-head h3 { font-size: 22px; font-weight: 700; }
+.chat-close {
+  width: 28px; height: 28px; border-radius: 50%; border: none;
+  background: #f07a7a; color: #000; cursor: pointer; padding: 5px;
+}
+.chat-body {
+  flex: 1; overflow-y: auto; background: #f6f6f6;
+  padding: 18px 16px; display: flex; flex-direction: column; gap: 14px;
+}
+.msg { max-width: 78%; padding: 10px 13px; border-radius: 10px; font-size: 14px; line-height: 1.35; word-wrap: break-word; }
+.msg.user { align-self: flex-end; background: #4a9af5; color: #fff; }
+.msg.bot { align-self: flex-start; background: #d9d9d9; color: #111; }
+.msg img { display: block; max-width: 100%; border-radius: 6px; }
+
+.chat-chips {
+  display: flex; gap: 8px; overflow-x: auto;
+  border-top: 1px solid #000; padding: 12px 0 4px;
+  scrollbar-width: none;
+}
+.chat-chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex: none; background: #d9d9d9; border: none; border-radius: 6px;
+  padding: 5px 12px; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.chip:first-child { margin-left: 10px; }
+.chip:hover { background: #c6dcf8; }
+
+.chat-input { display: flex; align-items: center; gap: 8px; padding: 10px 12px 16px; }
+.chat-img { width: 26px; height: 26px; flex: none; cursor: pointer; color: #000; }
+.chat-input input[type="text"] {
+  flex: 1; height: 36px; border: none; border-radius: 8px;
+  background: #d9d9d9; padding: 0 12px; font-size: 14px;
+}
+.chat-input input[type="text"]:focus { outline: 2px solid #4a9af5; }
+.chat-send {
+  width: 34px; height: 36px; flex: none; border: none; border-radius: 8px;
+  background: #d9d9d9; cursor: pointer; padding: 7px;
+}
+.chat-send svg { width: 100%; height: 100%; }
+
+/* Responsif */
+@media (max-width: 800px) {
+  .navbar { padding: 0 14px; height: 70px; }
+  .brand-name { font-size: 22px; }
+  .menu { display: none; }
+  .nav-icons { margin-left: auto; }
+  .wrap { padding-top: 90px; }
+  .hero { flex-direction: column; }
+  .hero-img { width: 100%; margin-top: 0; min-height: 200px; }
+  .hero-title { font-size: 44px; }
+  .chat { right: 10px; left: 10px; width: auto; bottom: 100px; }
+}
+
+/* ===================== HALAMAN PRODUK ===================== */
+.wrap-produk { max-width: 1060px; padding-top: 118px; }
+
+.produk-panel {
+  background: rgba(255,255,255,.28);
+  border: 1px solid rgba(70,70,70,.45);
+  border-radius: 22px;
+  padding: 20px 20px 32px;
+}
+
+.search-row { display: flex; gap: 18px; }
+.search-box {
+  flex: 1;
+  display: flex; align-items: center; gap: 14px;
+  height: 56px; padding: 0 22px;
+  background: rgba(110,110,110,.62);
+  border-radius: 8px;
+  color: #fff;
+}
+.search-box svg, .btn-cari svg { width: 28px; height: 28px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.search-box input {
+  flex: 1; min-width: 0; border: none; outline: none; background: transparent;
+  color: #fff; font-size: 18px;
+}
+.search-box input::placeholder { color: rgba(255,255,255,.92); }
+
+.btn-cari {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  width: 136px; height: 56px;
+  background: rgba(110,175,250,.82);
+  color: #fff; font-size: 24px; font-weight: 500;
+  border: none; border-radius: 8px; cursor: pointer;
+  transition: filter .2s;
+}
+.btn-cari:hover { filter: brightness(.95); }
+
+.filters { display: flex; gap: 28px; margin-top: 16px; flex-wrap: wrap; }
+.filters select {
+  appearance: none; -webkit-appearance: none;
+  width: 232px; height: 38px; padding: 0 38px 0 6px;
+  background: rgba(110,110,110,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='20' viewBox='0 0 14 20' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8l4-4 4 4M3 12l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 10px center;
+  color: #fff; font-size: 18px;
+  border: none; border-radius: 4px; cursor: pointer;
+}
+.filters select option { color: #000; }
+
+.produk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 26px;
+  margin-top: 20px;
+}
+.produk-kosong { text-align: center; color: #333; font-size: 18px; padding: 40px 0; }
+
+.p-card {
+  background: rgba(255,255,255,.92);
+  border-radius: 14px;
+  padding: 0 0 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  display: flex; flex-direction: column;
+}
+.p-img {
+  position: relative;
+  height: 190px;
+  background: #c4c4c4;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 14px 14px 0 0;
+}
+.p-img img { max-height: 158px; max-width: 80%; object-fit: contain; }
+.p-badge {
+  position: absolute; top: 9px; left: 9px;
+  background: #7ab8fa; color: #000;
+  font-size: 11px; padding: 2px 9px; border-radius: 10px;
+}
+.p-info { padding: 8px 12px 0; flex: 1; }
+.p-merk { font-size: 11px; color: #555; text-transform: uppercase; }
+.p-nama { font-size: 17px; font-weight: 700; margin: 1px 0 3px; }
+.p-desc { font-size: 12px; line-height: 1.25; color: #444; }
+.p-aksi { display: flex; gap: 18px; padding: 10px 12px 0; }
+.p-aksi button {
+  flex: 1; height: 32px; border-radius: 6px; cursor: pointer;
+  font-size: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.btn-lihat { background: #e6f0fd; border: 1px solid #5aa2f5; color: #3b82f6; }
+.btn-lihat svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn-lihat:hover { background: #d3e5fc; }
+.btn-beli { background: #7ab8fa; border: 1px solid #7ab8fa; color: #fff; font-weight: 600; }
+.btn-beli:hover { filter: brightness(.95); }
+
+@media (max-width: 900px) { .produk-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 800px) {
+  .wrap-produk { padding-top: 90px; }
+  .search-row { flex-direction: column; }
+  .btn-cari { width: 100%; }
+  .filters select { width: 100%; }
+}
+@media (max-width: 560px) { .produk-grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,344 @@
+:root {
+    --primary-blue: #007bff;
+    --primary-sky: #51abf6;
+    --bg-dark-outer: #2a2a2a;
+    --card-bg-gradient: linear-gradient(135deg, #78a6cb 0%, #bfe3f7 100%);
+    --card-white: #ffffff;
+    --input-bg: #e0e0e0;
+    --status-active: #0084ff;
+    --status-pending: #ff0000;
+    --btn-success: #00c853;
+    --btn-danger: #ff0000;
+    --border-color: #333333;
+    --radius-card: 16px;
+    --radius-item: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark-outer);
+    min-height: 100vh;
+    color: #000000;
+}
+
+/* NAVBAR ADMIN */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #cbd5e1;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #1a365d;
+}
+
+.logo-icon {
+    font-size: 26px;
+    color: var(--primary-sky);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+/* MAIN LAYOUT BANNER */
+.main-content {
+    max-width: 1000px;
+    margin: 32px auto;
+    padding: 0 16px;
+}
+
+.dashboard-banner {
+    background: var(--card-bg-gradient);
+    border-radius: var(--radius-card);
+    padding: 36px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.main-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* KARTU VERIFIKASI UTAMA */
+.verification-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* TAB SWITCHER */
+.verif-tab-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.verif-tab-btn {
+    background-color: var(--primary-sky);
+    color: #ffffff;
+    border: 1px solid #1a73e8;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.verif-tab-btn.active {
+    background-color: var(--primary-blue);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.table-header-title {
+    background: #f0f0f0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.table-header-title h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
+}
+
+/* TABEL STYLING */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.verif-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.verif-table th, .verif-table td {
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.verif-table th {
+    font-weight: 800;
+    color: #000000;
+    background: #e2e8f0;
+}
+
+/* STATUS BADGE */
+.status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 12px;
+    border: 1px solid #000000;
+}
+
+.status-badge.active {
+    background-color: var(--status-active);
+}
+
+.status-badge.pending {
+    background-color: var(--status-pending);
+}
+
+/* TOMBOL AKSI AKSI TABLE */
+.btn-action-verif {
+    background-color: var(--btn-success);
+    color: #ffffff;
+    border: 1px solid #000;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.btn-action-verif:hover {
+    transform: scale(1.05);
+}
+
+/* POP-UP MODAL STYLING (ISI VERIFIKASI) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-card {
+    background: #f4f6f8;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-card);
+    width: 100%;
+    max-width: 500px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.form-group {
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #b0b0b0;
+    background-color: var(--input-bg);
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+}
+
+/* FILE BUKTI TRANSFER GROUP */
+.file-check-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    margin-bottom: 24px;
+}
+
+.file-name-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #b0b0b0;
+    background-color: var(--input-bg);
+    border-radius: 6px;
+    font-size: 12px;
+    outline: none;
+}
+
+.btn-cek-bukti {
+    background-color: var(--primary-sky);
+    color: #ffffff;
+    border: 1px solid #1a73e8;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* AKSI MODAL BUTTONS */
+.modal-action-btns {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-tolak {
+    flex: 1;
+    background-color: var(--btn-danger);
+    color: white;
+    border: 1px solid #000;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-verifikasi {
+    flex: 1;
+    background-color: var(--btn-success);
+    color: white;
+    border: 1px solid #000;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .dashboard-banner {
+        padding: 20px 16px;
+    }
+    .modal-card {
+        padding: 20px;
+        max-width: 90%;
+    }
+}

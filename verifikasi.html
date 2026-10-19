@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Toko - Admin SaaS</title>
+    <link rel="stylesheet" href="verifikasi-style.css">
+    <!-- Font Inter & Phosphor Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <!-- Header Navbar Admin -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="ph ph-infinity logo-icon"></i>
+                <span class="logo-text">infinity</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="admin-dashboard.html" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link active">Verifikasi</a>
+                <a href="#" class="nav-link">Kelola</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" title="Admin Profile"><i class="ph ph-user-circle"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+        <div class="dashboard-banner">
+            <h1 class="main-title">Verifikasi Toko</h1>
+
+            <!-- Card Utama -->
+            <div class="verification-card">
+                
+                <!-- Sub Header / Tab Switcher (Verifikasi Data / Verifikasi Pembayaran) -->
+                <div class="verif-tab-container">
+                    <button class="verif-tab-btn active" data-tab="data">Verifikasi Data</button>
+                    <button class="verif-tab-btn" data-tab="pembayaran">Verifikasi Pembayaran</button>
+                </div>
+
+                <!-- Judul Tabel -->
+                <div class="table-header-title">
+                    <h2>Permohonan Verifikasi Toko Baru</h2>
+                </div>
+
+                <!-- Tabel Permohonan Verifikasi -->
+                <div class="table-responsive">
+                    <table class="verif-table">
+                        <thead>
+                            <tr>
+                                <th>ID Toko</th>
+                                <th>Nama Toko</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="verif-table-body">
+                            <!-- Data akan di-render secara dinamis via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- POP-UP MODAL: ISI VERIFIKASI (DETAIL TOKO) -->
+    <div id="verif-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <form id="verif-detail-form">
+                <!-- Hidden input untuk menyimpan ID toko yang dipilih -->
+                <input type="hidden" id="modal-store-id">
+
+                <div class="form-group">
+                    <label>Nama Toko</label>
+                    <input type="text" id="modal-store-name" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="modal-email" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>No Telp</label>
+                    <input type="text" id="modal-phone" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Alamat Lokasi</label>
+                    <input type="text" id="modal-address" readonly>
+                </div>
+
+                <!-- Baris Bukti Transfer -->
+                <div class="file-check-group">
+                    <input type="text" id="modal-file-name" value="Bukti Transfer.png" readonly class="file-name-input">
+                    <button type="button" id="btn-cek-bukti" class="btn-cek-bukti">Cek Bukti Transfer</button>
+                </div>
+
+                <!-- Tombol Aksi Verifikasi / Tolak -->
+                <div class="modal-action-btns">
+                    <button type="button" id="btn-tolak" class="btn-tolak">Tolak</button>
+                    <button type="button" id="btn-verifikasi" class="btn-verifikasi">Verifikasi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

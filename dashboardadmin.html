@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Marketplace Multi-Tenant SaaS Cat</title>
+    <link rel="stylesheet" href="dashboardadmin-style.css">
+    <!-- Font Inter & Phosphor Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <!-- Header Navigation Admin -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="ph ph-infinity logo-icon"></i>
+                <span class="logo-text">infinity</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="dashboardadmin.html" class="nav-link">Dashboard</a>
+            
+                <!-- UBAH DI SINI: Tambahkan href="verifikasi.html" -->
+                <a href="verifikasi.html" class="nav-link active">Verifikasi</a>
+            
+                <a href="kelola.html" class="nav-link">Kelola</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" title="Admin Profile"><i class="ph ph-user-circle"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- HALAMAN 1: DASHBOARD OVERVIEW -->
+        <section id="section-dashboard" class="admin-section active">
+            <div class="dashboard-banner">
+                <h1 class="main-title">Dashboard Overview</h1>
+
+                <div class="stats-container">
+                    <!-- Card 1: Total Toko -->
+                    <div class="stat-card">
+                        <h3>Total Toko</h3>
+                        <div class="stat-box">
+                            <span id="val-total-toko" class="stat-number blue-text">100</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Total User -->
+                    <div class="stat-card">
+                        <h3>Total User</h3>
+                        <div class="stat-box">
+                            <span id="val-total-user" class="stat-number blue-text">100</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Pending Verifikasi -->
+                    <div class="stat-card">
+                        <h3>Pending Verifikasi</h3>
+                        <div class="stat-box">
+                            <span id="val-pending-verif" class="stat-number red-text">100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HALAMAN 2: VERIFIKASI (Tambahan Interaktif) -->
+        <section id="section-verifikasi" class="admin-section">
+            <div class="dashboard-banner">
+                <h1 class="main-title">Verifikasi Toko / Tenant Baru</h1>
+                <div class="content-card-box">
+                    <p class="section-desc">Daftar toko tenant yang mendaftar dan menunggu persetujuan admin.</p>
+                    <div id="verif-list" class="data-list">
+                        <!-- Di-render via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HALAMAN 3: KELOLA (Tambahan Interaktif) -->
+        <section id="section-kelola" class="admin-section">
+            <div class="dashboard-banner">
+                <h1 class="main-title">Kelola Sistem & Tenant</h1>
+                <div class="content-card-box">
+                    <p class="section-desc">Pengaturan data master toko, pengguna, dan katalog cat platform SaaS.</p>
+                    <div class="manage-grid">
+                        <div class="manage-item">
+                            <i class="ph ph-storefront"></i>
+                            <span>Kelola Data Toko</span>
+                        </div>
+                        <div class="manage-item">
+                            <i class="ph ph-users"></i>
+                            <span>Kelola Pengguna</span>
+                        </div>
+                        <div class="manage-item">
+                            <i class="ph ph-paint-brush"></i>
+                            <span>Kelola Katalog Global</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>

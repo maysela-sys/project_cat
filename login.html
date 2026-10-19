@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masuk / Daftar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-role="customer">Customer</button>
+      <button class="tab" data-role="toko">Toko</button>
+      <button class="tab" data-role="admin">Admin</button>
+    </div>
+
+    <h1 id="judul">Masuk</h1>
+
+    <form id="form" autocomplete="off">
+      <div class="field" data-show="daftar-customer">
+        <label for="username">Username</label>
+        <input type="text" id="username">
+      </div>
+
+      <div class="field" data-show="daftar-toko">
+        <label for="namaToko">Nama Toko</label>
+        <input type="text" id="namaToko">
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email">
+      </div>
+
+      <div class="field" data-show="daftar-customer daftar-toko">
+        <label for="telp">No Telp</label>
+        <input type="tel" id="telp">
+      </div>
+
+      <div class="field">
+        <label for="sandi">Kata Sandi</label>
+        <input type="password" id="sandi">
+      </div>
+
+      <div class="field" data-show="daftar-toko">
+        <label for="alamat">Alamat Lokasi</label>
+        <input type="text" id="alamat">
+      </div>
+
+      <a href="#" class="link" id="lupa" data-show="login-customer login-toko login-admin">Lupa Kata Sandi?</a>
+      <a href="#" class="link" id="toggleMode" data-show="daftar-customer daftar-toko">Sudah Punya Akun?</a>
+
+      <button type="submit" class="btn" id="btnSubmit">Masuk</button>
+
+      <p class="alt" id="altMode" data-show="login-customer login-toko">
+        Belum punya akun? <a href="#" id="keDaftar">Daftar</a>
+      </p>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
